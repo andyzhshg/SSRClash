@@ -335,7 +335,7 @@ def clashapi():
     except Exception as e:
         return '检测调用格式是否正确'+ aff
 
-@app.route('/qx/nico', methods=['GET', 'POST'])
+@app.route('/qx/nameless', methods=['GET', 'POST'])
 def qxapi():
     try:
         sub = request.args.get('sublink')            
@@ -347,7 +347,7 @@ def qxapi():
     except Exception as e:
         return '请调用格式适合正确'
 
-@app.route('/ssr/nico', methods=['GET', 'POST'])
+@app.route('/ssr/nameless', methods=['GET', 'POST'])
 def ssrapi():
     try:
         sub = request.args.get('sublink')             
@@ -359,7 +359,7 @@ def ssrapi():
     except Exception as e:
         return '检测调用格式是否正确'
 
-@app.route('/loon/nico', methods=['GET', 'POST'])
+@app.route('/loon/nameless', methods=['GET', 'POST'])
 def loonapi():
     try:
         sub = request.args.get('sublink').replace('!','&')              
