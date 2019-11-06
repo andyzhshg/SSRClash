@@ -94,10 +94,10 @@ def getrules():             # 自定义规则
     try:
         finalrules=[]
         
-        with open("./root/SSRClash/config/general.yml", "r",encoding = 'utf-8') as f:
+        with open("$Path/SSRClash/config/general.yml", "r",encoding = 'utf-8') as f:
             p_rule = f.read() + '\n'
 
-        with open("./root/SSRClash/config/lrules.yml", "r",encoding = 'utf-8') as f:
+        with open("$Path/SSRClash/config/lrules.yml", "r",encoding = 'utf-8') as f:
             l_rule = f.read()        
         
         Peoxies = 'Proxy:\n'
