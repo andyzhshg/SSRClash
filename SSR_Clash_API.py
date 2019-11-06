@@ -13,7 +13,7 @@ import api.qx
 import api.loon
 from flask import Flask,render_template,request
 urllib3.disable_warnings()
-aff = 'STC可用，注册地址：tokyo-hot.stchks.com/auth/register?code=gzI5'
+aff = '获取失败 请检查订阅是否错误或者节点带特殊符号'
 
 def safe_base64_decode(s): # 解码
     try:
