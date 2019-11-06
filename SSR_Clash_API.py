@@ -94,10 +94,10 @@ def getrules():             # 自定义规则
     try:
         finalrules=[]
         
-        with open("./root/SSRClash/config/general.yml", "r",encoding = 'utf-8') as f:
+        with open("./root/SSRClash/config/general.yaml", "r",encoding = 'utf-8') as f:
             p_rule = f.read() + '\n'
 
-        with open("./root/SSRClash/config/lrules.yml", "r",encoding = 'utf-8') as f:
+        with open("./root/SSRClash/config/my.yaml", "r",encoding = 'utf-8') as f:
             l_rule = f.read()        
         
         Peoxies = 'Proxy:\n'
@@ -135,31 +135,25 @@ def writeRules(sublink,selectfirst):    #策略组及规则
         #'- { name: "延迟最低", type: "url-test", "proxies": ' + proxy + ', url: "http://www.gstatic.com/generate_204", interval: 600'+ '}\n'\
         if selectfirst == 'yes':             #是否修改代理模式默认顺序，默认为故障切换在前
             ProxyGroup='\n\nProxy Group:\n\n'\
-                    '- { name: "代理模式", type: select, proxies: ["手动选择","故障切换","DIRECT"] }\n'\
-                    '- { name: "手动选择", type: "select", "proxies": ' + proxy + '}\n'\
-                    '- { name: "故障切换", type: "fallback", proxies: ["手动选择","DIRECT"] , url: "http://www.gstatic.com/generate_204", interval: 450'+ '}\n'\
-                    '- { name: "Netflix", type: select, proxies: '+proxy+' }\n'\
-                    '- { name: "Youtube", type: select, proxies: ["代理模式",'+proxy1+'] }\n'\
-                    '- { name: "动画疯", type: select, proxies: ["代理模式",'+proxy1+'] }\n'\
-                    '- { name: "国际媒体", type: select, proxies: ["代理模式",'+proxy1+'] }\n'\
-                    '- { name: "国内媒体", type: select, proxies: ["DIRECT","代理模式","手动选择"] }\n'\
-                    '- { name: "恶意网站", type: select, proxies: ["REJECT", "DIRECT"] }\n'\
-                    '- { name: "Apple", type: select, proxies: ["DIRECT", "代理模式"] }\n'\
-                    '- { name: "漏网之鱼", type: select, proxies: ["代理模式", "DIRECT"] }\n\n\n'\
+                    '- { name: "PROXY", type: "select", "proxies": ' + proxy + '}\n'\
+                    '- { name: "netflix", type: select, proxies: '+proxy+' }\n'\
+                    '- { name: "line动画疯kk", type: select, proxies: ["PROXY",'+proxy1+'] }\n'\
+                    '- { name: "GlobalMedia", type: select, proxies: ["PROXY",'+proxy1+'] }\n'\
+                    '- { name: "HKMTMedia", type: select, proxies: ["DIRECT","PROXY","PROXY"] }\n'\
+                    '- { name: "Hijacking", type: select, proxies: ["REJECT", "DIRECT"] }\n'\
+                    '- { name: "Apple", type: select, proxies: ["DIRECT", "PROXY"] }\n'\
+                    '- { name: "白/黑名单", type: select, proxies: ["PROXY", "DIRECT"] }\n\n\n'\
                     'Rule:\n'
         else :
             ProxyGroup='\n\nProxy Group:\n\n'\
-                    '- { name: "代理模式", type: select, proxies: [ "故障切换","手动选择","DIRECT"] }\n'\
-                    '- { name: "故障切换", type: "fallback", proxies: ["手动选择","DIRECT"] , url: "http://www.gstatic.com/generate_204", interval: 450'+ '}\n'\
-                    '- { name: "手动选择", type: "select", "proxies": ' + proxy + '}\n'\
-                    '- { name: "Netflix", type: select, proxies: '+proxy+' }\n'\
-                    '- { name: "Youtube", type: select, proxies: ["代理模式",'+proxy1+'] }\n'\
-                    '- { name: "动画疯", type: select, proxies:  ["代理模式",'+proxy1+'] }\n'\
-                    '- { name: "国际媒体", type: select, proxies: ["代理模式",'+proxy1+'] }\n'\
-                    '- { name: "国内媒体", type: select, proxies: ["DIRECT","代理模式","手动选择"] }\n'\
-                    '- { name: "恶意网站", type: select, proxies: ["REJECT", "DIRECT"] }\n'\
-                    '- { name: "Apple", type: select, proxies: ["DIRECT", "代理模式"] }\n'\
-                    '- { name: "漏网之鱼", type: select, proxies: ["代理模式", "DIRECT"] }\n\n\n'\
+                    '- { name: "PROXY", type: "select", "proxies": ' + proxy + '}\n'\
+                    '- { name: "netflix", type: select, proxies: '+proxy+' }\n'\
+                    '- { name: "line动画疯kk", type: select, proxies: ["PROXY",'+proxy1+'] }\n'\
+                    '- { name: "GlobalMedia", type: select, proxies: ["PROXY",'+proxy1+'] }\n'\
+                    '- { name: "HKMTMedia", type: select, proxies: ["DIRECT","PROXY","PROXY"] }\n'\
+                    '- { name: "Hijacking", type: select, proxies: ["REJECT", "DIRECT"] }\n'\
+                    '- { name: "Apple", type: select, proxies: ["DIRECT", "PROXY"] }\n'\
+                    '- { name: "白/黑名单", type: select, proxies: ["PROXY", "DIRECT"] }\n\n\n'\
                     'Rule:\n'           
         rules = getrules()   #获取分流规则       
         currenttime = '# 更新时间为（看分钟就行，不知道哪个时区）：'+time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())+'\n' #获取更新时间
@@ -272,31 +266,25 @@ def writeRulescustom(sublink,flagname,selectfirst):    #客制化策略组及规
         proxy1 = proxy[1:-1]
         if selectfirst == 'yes':
             ProxyGroup='\n\nProxy Group:\n\n'\
-                    '- { name: "代理模式", type: select, proxies: ["手动选择","故障切换","DIRECT"] }\n'\
-                    '- { name: "手动选择", type: "select", "proxies": ' + proxy + '}\n'\
-                    '- { name: "故障切换", type: "fallback", proxies: ["手动选择","DIRECT"] , url: "http://www.gstatic.com/generate_204", interval: 450'+ '}\n'\
-                    '- { name: "Netflix", type: select, proxies: '+proxy+' }\n'\
-                    '- { name: "Youtube", type: select, proxies: ["代理模式",'+proxy1+'] }\n'\
-                    '- { name: "动画疯", type: select, proxies: ["代理模式",'+proxy1+'] }\n'\
-                    '- { name: "国际媒体", type: select, proxies: ["代理模式",'+proxy1+'] }\n'\
-                    '- { name: "国内媒体", type: select, proxies: ["DIRECT","代理模式","手动选择"] }\n'\
-                    '- { name: "恶意网站", type: select, proxies: ["REJECT", "DIRECT"] }\n'\
-                    '- { name: "Apple", type: select, proxies: ["DIRECT", "代理模式"] }\n'\
-                    '- { name: "漏网之鱼", type: select, proxies: ["代理模式", "DIRECT"] }\n\n\n'\
+                    '- { name: "PROXY", type: "select", "proxies": ' + proxy + '}\n'\
+                    '- { name: "netflix", type: select, proxies: '+proxy+' }\n'\
+                    '- { name: "line动画疯kk", type: select, proxies: ["PROXY",'+proxy1+'] }\n'\
+                    '- { name: "GlobalMedia", type: select, proxies: ["PROXY",'+proxy1+'] }\n'\
+                    '- { name: "HKMTMedia", type: select, proxies: ["DIRECT","PROXY","PROXY"] }\n'\
+                    '- { name: "Hijacking", type: select, proxies: ["REJECT", "DIRECT"] }\n'\
+                    '- { name: "Apple", type: select, proxies: ["DIRECT", "PROXY"] }\n'\
+                    '- { name: "白/黑名单", type: select, proxies: ["PROXY", "DIRECT"] }\n\n\n'\
                     'Rule:\n'
         else :
             ProxyGroup='\n\nProxy Group:\n\n'\
-                    '- { name: "代理模式", type: select, proxies: [ "故障切换","手动选择","DIRECT"] }\n'\
-                    '- { name: "故障切换", type: "fallback", proxies: ["手动选择","DIRECT"] , url: "http://www.gstatic.com/generate_204", interval: 450'+ '}\n'\
-                    '- { name: "手动选择", type: "select", "proxies": ' + proxy + '}\n'\
-                    '- { name: "Netflix", type: select, proxies: '+proxy+' }\n'\
-                    '- { name: "Youtube", type: select, proxies: ["代理模式",'+proxy1+'] }\n'\
-                    '- { name: "动画疯", type: select, proxies:  ["代理模式",'+proxy1+'] }\n'\
-                    '- { name: "国际媒体", type: select, proxies: ["代理模式",'+proxy1+'] }\n'\
-                    '- { name: "国内媒体", type: select, proxies: ["DIRECT","代理模式","手动选择"] }\n'\
-                    '- { name: "恶意网站", type: select, proxies: ["REJECT", "DIRECT"] }\n'\
-                    '- { name: "Apple", type: select, proxies: ["DIRECT", "代理模式"] }\n'\
-                    '- { name: "漏网之鱼", type: select, proxies: ["代理模式", "DIRECT"] }\n\n\n'\
+                    '- { name: "PROXY", type: "select", "proxies": ' + proxy + '}\n'\
+                    '- { name: "netflix", type: select, proxies: '+proxy+' }\n'\
+                    '- { name: "line动画疯kk", type: select, proxies: ["PROXY",'+proxy1+'] }\n'\
+                    '- { name: "GlobalMedia", type: select, proxies: ["PROXY",'+proxy1+'] }\n'\
+                    '- { name: "HKMTMedia", type: select, proxies: ["DIRECT","PROXY","PROXY"] }\n'\
+                    '- { name: "Hijacking", type: select, proxies: ["REJECT", "DIRECT"] }\n'\
+                    '- { name: "Apple", type: select, proxies: ["DIRECT", "PROXY"] }\n'\
+                    '- { name: "白/黑名单", type: select, proxies: ["PROXY", "DIRECT"] }\n\n\n'\
                     'Rule:\n'             
         rules = getrules()        
         currenttime = '# 更新时间为（看分钟就行，不知道哪个时区）：'+time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())+'\n'
