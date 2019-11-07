@@ -205,7 +205,8 @@ def getcustomssrlink(sublink, flagname):    #客制化ssr订阅
 def writeRulescustom(sublink,flagname,selectfirst):    #客制化策略组及规则
     try:
         #print(sublink + 'custom')
-        other=[]       
+        other=[]
+        tw=[]
         Peoxies = ''
         noderemark = ''      #用于剔除节点标准
         data = Retry_request(sublink)    #请求订阅        
@@ -261,6 +262,7 @@ def writeRulescustom(sublink,flagname,selectfirst):    #客制化策略组及规
                                 noderemark += remark
                                 Peoxies +='- '+str(Json)+'\n'
                                 other.insert(0,remark)
+                                if "深台" in remark  or "彰化" in remark  or "新北" in remark or "台" in remark : tw.insert(0,remark)
                 else:                              #每组第一个不匹配
                     continue
 
@@ -270,7 +272,7 @@ def writeRulescustom(sublink,flagname,selectfirst):    #客制化策略组及规
             ProxyGroup='\n\nProxy Group:\n\n'\
                     '- { name: "PROXY", type: "select", "proxies": ' + proxy + '}\n'\
                     '- { name: "netflix", type: select, proxies: '+proxy+' }\n'\
-                    '- { name: "line动画疯kk", type: select, proxies: ' +str(tw)[:-1]+',"PROXY", "DIRECT"] }\n'\
+                    '- { name: "line动画疯kk", type: select, proxies: ["PROXY", "DIRECT",' +str(tw)[1:]+' }\n'\
                     '- { name: "GlobalMedia", type: select, proxies: ["PROXY",'+proxy1+'] }\n'\
                     '- { name: "HKMTMedia", type: select, proxies: ["DIRECT","PROXY","PROXY"] }\n'\
                     '- { name: "Hijacking", type: select, proxies: ["REJECT", "DIRECT"] }\n'\
@@ -281,7 +283,7 @@ def writeRulescustom(sublink,flagname,selectfirst):    #客制化策略组及规
             ProxyGroup='\n\nProxy Group:\n\n'\
                     '- { name: "PROXY", type: "select", "proxies": ' + proxy + '}\n'\
                     '- { name: "netflix", type: select, proxies: '+proxy+' }\n'\
-                    '- { name: "line动画疯kk", type: select, proxies: ' +str(tw)[:-1]+',"PROXY", "DIRECT"] }\n'\
+                    '- { name: "line动画疯kk", type: select, proxies: ["PROXY", "DIRECT",' +str(tw)[1:]+' }\n'\
                     '- { name: "GlobalMedia", type: select, proxies: ["PROXY",'+proxy1+'] }\n'\
                     '- { name: "HKMTMedia", type: select, proxies: ["DIRECT","PROXY","PROXY"] }\n'\
                     '- { name: "Hijacking", type: select, proxies: ["REJECT", "DIRECT"] }\n'\
