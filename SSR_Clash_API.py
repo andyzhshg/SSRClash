@@ -121,7 +121,7 @@ def writeRules(sublink,selectfirst):    #策略组及规则
             remark = nodeR['remark']                                
             if "30倍" in remark:  #用于剔除高倍率节点
                 continue
-            if "首尔" in remarkor or "韩" in remark :
+            if "首尔" in remark or "韩" in remark :
                 remark = '🇰🇷' + remark
             if "狮城"  in remark or "新加坡" in remark :
                 remark = '🇸🇬' + remark
@@ -248,7 +248,7 @@ def writeRulescustom(sublink,flagname,selectfirst):    #客制化策略组及规
             remark = nodeR['remark']                                
             if "30倍" in remark:  #用于剔除高倍率节点
                 continue
-            if "首尔" in remarkor or "韩" in remark :
+            if "首尔" in remark or "韩" in remark :
                 remark = '🇰🇷' + remark
             if "狮城"  in remark or "新加坡" in remark :
                 remark = '🇸🇬' + remark
