@@ -133,7 +133,7 @@ def writeRules(sublink,selectfirst):    #策略组及规则
                 remark = '🇯🇵' + remark
             if "深台" in remark  or "彰化" in remark  or "新北" in remark or "台" in remark:
                 remark = '🇹🇼' + remark
-            if "悉尼" in remark  or "尼" in remark  or "尼" in remark or "尼" in remark:
+            if "悉尼" in remark  or "澳大利亚" in remark  or "澳大利亚" in remark or "澳大利亚" in remark:
                 remark = '🇦🇺' + remark
             if "伦敦"  in remark or "英国" in remark :
                 remark = '🇬🇧' + remark
@@ -254,7 +254,7 @@ def writeRulescustom(sublink,flagname,selectfirst):    #客制化策略组及规
                 remark = '🇯🇵' + remark
             if "深台" in remark  or "彰化" in remark  or "新北" in remark or "台" in remark:
                 remark = '🇹🇼' + remark
-            if "悉尼" in remark  or "尼" in remark  or "尼" in remark or "尼" in remark:
+            if "悉尼" in remark  or "澳大利亚" in remark  or "澳大利亚" in remark or "澳大利亚" in remark:
                 remark = '🇦🇺' + remark
             if "伦敦"  in remark or "英国" in remark :
                 remark = '🇬🇧' + remark
