@@ -121,15 +121,15 @@ def writeRules(sublink,selectfirst):    #策略组及规则
             remark = nodeR['remark']                                
             if "30倍" in remark:  #用于剔除高倍率节点
                 continue
-            if "首尔" in remarkor "韩" in remark :
+            if "首尔" in remarkor or "韩" in remark :
                 remark = '🇰🇷' + remark
             if "狮城"  in remark or "新加坡" in remark :
                 remark = '🇸🇬' + remark
-            if "港" in remark  or "沪港" in remark  or "京港" in remark or "杭港" in remark:
+            if "港" in remark  :
                 remark = '🇭🇰' + remark
             if "美" in remark  or "圣克拉拉" in remark  or "波特兰" in remark  or "洛杉矶" in remark  or "费利蒙" in remark  or "圣何塞" in remark or "达拉斯" in remark or "芝加哥" in remark or "凤凰城" in remark or "西雅图" in remark or "硅谷" in remark:
                 remark = '🇺🇸' + remark
-            if "日" in remark  or "埼玉" in remark  or "沪日" in remark  or "东京" in remark or "大阪" in remark:
+            if "日" in remark  or "埼玉" in remark   or "东京" in remark or "大阪" in remark:
                 remark = '🇯🇵' + remark
             if "台" in remark  or "彰化" in remark  or "新北" in remark :
                 remark = '🇹🇼' + remark
@@ -248,15 +248,15 @@ def writeRulescustom(sublink,flagname,selectfirst):    #客制化策略组及规
             remark = nodeR['remark']                                
             if "30倍" in remark:  #用于剔除高倍率节点
                 continue
-            if "首尔" in remarkor "韩" in remark :
+            if "首尔" in remarkor or "韩" in remark :
                 remark = '🇰🇷' + remark
             if "狮城"  in remark or "新加坡" in remark :
                 remark = '🇸🇬' + remark
-            if "港" in remark  or "沪港" in remark  or "京港" in remark or "杭港" in remark:
+            if "港" in remark  :
                 remark = '🇭🇰' + remark
             if "美" in remark  or "圣克拉拉" in remark  or "波特兰" in remark  or "洛杉矶" in remark  or "费利蒙" in remark  or "圣何塞" in remark or "达拉斯" in remark or "芝加哥" in remark or "凤凰城" in remark or "西雅图" in remark or "硅谷" in remark:
                 remark = '🇺🇸' + remark
-            if "日" in remark  or "埼玉" in remark  or "沪日" in remark  or "东京" in remark or "大阪" in remark:
+            if "日" in remark  or "埼玉" in remark   or "东京" in remark or "大阪" in remark:
                 remark = '🇯🇵' + remark
             if "台" in remark  or "彰化" in remark  or "新北" in remark :
                 remark = '🇹🇼' + remark
