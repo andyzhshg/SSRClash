@@ -127,7 +127,7 @@ def writeRules(sublink,selectfirst):    #策略组及规则
                 remark = '🇸🇬' + remark
             if "香港" in remark  or "沪港" in remark  or "京港" in remark or "杭港" in remark:
                 remark = '🇭🇰' + remark
-            if "圣克拉拉" in remark  or "波兰特" in remark  or "洛杉矶" in remark  or "费利蒙" in remark  or "圣何塞" in remark or "达拉斯" in remark or "芝加哥" in remark or "凤凰城" in remark or "西雅图" in remark or "硅谷" in remark:
+            if "圣克拉拉" in remark  or "波特兰" in remark  or "洛杉矶" in remark  or "费利蒙" in remark  or "圣何塞" in remark or "达拉斯" in remark or "芝加哥" in remark or "凤凰城" in remark or "西雅图" in remark or "硅谷" in remark:
                 remark = '🇺🇸' + remark
             if "埼玉" in remark  or "沪日" in remark  or "东京" in remark or "大阪" in remark:
                 remark = '🇯🇵' + remark
@@ -248,7 +248,7 @@ def writeRulescustom(sublink,flagname,selectfirst):    #客制化策略组及规
                 remark = '🇸🇬' + remark
             if "香港" in remark  or "沪港" in remark  or "京港" in remark or "杭港" in remark:
                 remark = '🇭🇰' + remark
-            if "圣克拉拉" in remark  or "波兰特" in remark  or "洛杉矶" in remark  or "费利蒙" in remark  or "圣何塞" in remark or "达拉斯" in remark or "芝加哥" in remark or "凤凰城" in remark or "西雅图" in remark or "硅谷" in remark:
+            if "圣克拉拉" in remark  or "波特兰" in remark  or "洛杉矶" in remark  or "费利蒙" in remark  or "圣何塞" in remark or "达拉斯" in remark or "芝加哥" in remark or "凤凰城" in remark or "西雅图" in remark or "硅谷" in remark:
                 remark = '🇺🇸美' + remark
             if "埼玉" in remark  or "沪日" in remark  or "东京" in remark or "大阪" in remark:
                 remark = '🇯🇵日' + remark
