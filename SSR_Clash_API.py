@@ -121,6 +121,29 @@ def writeRules(sublink,selectfirst):    #策略组及规则
             remark = nodeR['remark']                                
             if "30倍" in remark:  #用于剔除高倍率节点
                 continue
+            if "首尔" in remark:
+                remark = '🇰🇷' + remark
+            if "狮城"  in remark or "新加坡" in remark :
+                remark = '🇸🇬' + remark
+            if "香港" in remark  or "沪港" in remark  or "京港" in remark or "杭港" in remark:
+                remark = '🇭🇰' + remark
+            if "洛杉矶" in remark  or "费利蒙" in remark  or "圣何塞" in remark or "达拉斯" in remark or "芝加哥" in remark or "凤凰城" in remark or "西雅图" in remark or "硅谷" in remark:
+                remark = '🇺🇸' + remark
+            if "埼玉" in remark  or "沪日" in remark  or "东京" in remark or "大阪" in remark:
+                remark = '🇯🇵' + remark
+            if "深台" in remark  or "彰化" in remark  or "新北" in remark or "台" in remark:
+                remark = '🇹🇼' + remark
+            if "悉尼" in remark  or "尼" in remark  or "尼" in remark or "尼" in remark:
+                remark = '🇦🇺' + remark
+            if "伦敦"  in remark or "英国" in remark :
+                remark = '🇬🇧' + remark
+            if "法兰克福"  in remark or "德国" in remark :
+                remark = '🇩🇪' + remark
+            if "泰国"  in remark or "曼谷" in remark :
+                remark = '🇹🇭' + remark
+            if "俄罗斯"  in remark or "圣彼得堡" in remark :
+                remark = '🇷🇺' + remark
+            #加图标到此结束
             if nodeR['protocol_param'] == '' and  nodeR['obfs_param'] == '':    #判断是否为ssr
                 if nodeR['method'] == 'none':
                     continue
@@ -219,6 +242,29 @@ def writeRulescustom(sublink,flagname,selectfirst):    #客制化策略组及规
             remark = nodeR['remark']                                
             if "30倍" in remark:  #用于剔除高倍率节点
                 continue
+            if "首尔" in remark:
+                remark = '🇰🇷' + remark
+            if "狮城"  in remark or "新加坡" in remark :
+                remark = '🇸🇬' + remark
+            if "香港" in remark  or "沪港" in remark  or "京港" in remark or "杭港" in remark:
+                remark = '🇭🇰' + remark
+            if "洛杉矶" in remark  or "费利蒙" in remark  or "圣何塞" in remark or "达拉斯" in remark or "芝加哥" in remark or "凤凰城" in remark or "西雅图" in remark or "硅谷" in remark:
+                remark = '🇺🇸' + remark
+            if "埼玉" in remark  or "沪日" in remark  or "东京" in remark or "大阪" in remark:
+                remark = '🇯🇵' + remark
+            if "深台" in remark  or "彰化" in remark  or "新北" in remark or "台" in remark:
+                remark = '🇹🇼' + remark
+            if "悉尼" in remark  or "尼" in remark  or "尼" in remark or "尼" in remark:
+                remark = '🇦🇺' + remark
+            if "伦敦"  in remark or "英国" in remark :
+                remark = '🇬🇧' + remark
+            if "法兰克福"  in remark or "德国" in remark :
+                remark = '🇩🇪' + remark
+            if "泰国"  in remark or "曼谷" in remark :
+                remark = '🇹🇭' + remark
+            if "俄罗斯"  in remark or "圣彼得堡" in remark :
+                remark = '🇷🇺' + remark
+            #加图标到此结束
             for flag in flags:     #遍历分组匹配规则
                 if flag == '':
                     continue
