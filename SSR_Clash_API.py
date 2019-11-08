@@ -130,8 +130,8 @@ def writeRules(sublink,selectfirst):    #策略组及规则
                 Json={ 'name': remark, 'type': 'ssr', 'server': nodeR['server'], 'port': nodeR['server_port'], 'password':nodeR['password'] , \
                   'cipher': nodeR['method'], 'protocol': nodeR['protocol'], 'protocolparam': nodeR['protocol_param'], 'obfs': nodeR['obfs'], 'obfsparam': nodeR['obfs_param'] }
             Peoxies +='- '+str(Json)+'\n'    #节点加加
-            other.insert(0,remark)           #节点名list加加
-            if "深台" in remark  or "彰化" in remark  or "新北" in remark or "台" in remark : tw.insert(0,remark)
+            other.append(remark)          #节点名list加加
+            if "深台" in remark  or "彰化" in remark  or "新北" in remark or "台" in remark : tw.append(remark)
         proxy = str(other)                   #节点名转化为字符串
         proxy1 = proxy[1:-1]                 #节点名字符串去掉中括号
         #'- { name: "延迟最低", type: "url-test", "proxies": ' + proxy + ', url: "http://www.gstatic.com/generate_204", interval: 600'+ '}\n'\
@@ -261,8 +261,8 @@ def writeRulescustom(sublink,flagname,selectfirst):    #客制化策略组及规
                                 'cipher': nodeR['method'], 'protocol': nodeR['protocol'], 'protocolparam': nodeR['protocol_param'], 'obfs': nodeR['obfs'], 'obfsparam': nodeR['obfs_param'] }
                                 noderemark += remark
                                 Peoxies +='- '+str(Json)+'\n'
-                                other.insert(0,remark)
-                                if "深台" in remark  or "彰化" in remark  or "新北" in remark or "台" in remark : tw.insert(0,remark)
+                                other.append(remark)
+                                if "深台" in remark  or "彰化" in remark  or "新北" in remark or "台" in remark : tw.append(remark)
                 else:                              #每组第一个不匹配
                     continue
 
