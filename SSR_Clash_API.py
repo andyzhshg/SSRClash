@@ -129,7 +129,7 @@ def writeRules(sublink,selectfirst):    #策略组及规则
                 remark = '🇭🇰' + remark
             if "美" in remark  or "圣克拉拉" in remark  or "波特兰" in remark  or "洛杉矶" in remark  or "费利蒙" in remark  or "圣何塞" in remark or "达拉斯" in remark or "芝加哥" in remark or "凤凰城" in remark or "西雅图" in remark or "硅谷" in remark:
                 remark = '🇺🇸' + remark
-            if "日" in remark  or "埼玉" in remark   or "东京" in remark or "大阪" in remark:
+            if "日本" in remark  or "埼玉" in remark   or "东京" in remark or "大阪" in remark or "沪日" in remark or "深日" in remark or "川日" in remark:
                 remark = '🇯🇵' + remark
             if "台" in remark  or "彰化" in remark  or "新北" in remark :
                 remark = '🇹🇼' + remark
@@ -256,7 +256,7 @@ def writeRulescustom(sublink,flagname,selectfirst):    #客制化策略组及规
                 remark = '🇭🇰' + remark
             if "美" in remark  or "圣克拉拉" in remark  or "波特兰" in remark  or "洛杉矶" in remark  or "费利蒙" in remark  or "圣何塞" in remark or "达拉斯" in remark or "芝加哥" in remark or "凤凰城" in remark or "西雅图" in remark or "硅谷" in remark:
                 remark = '🇺🇸' + remark
-            if "日" in remark  or "埼玉" in remark   or "东京" in remark or "大阪" in remark:
+            if "日本" in remark  or "埼玉" in remark   or "东京" in remark or "大阪" in remark or "沪日" in remark or "深日" in remark or "川日" in remark:
                 remark = '🇯🇵' + remark
             if "台" in remark  or "彰化" in remark  or "新北" in remark :
                 remark = '🇹🇼' + remark
