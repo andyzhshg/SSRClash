@@ -150,11 +150,11 @@ def writeRules(sublink,selectfirst):    #策略组及规则
             if "巴西"  in remark or "圣保罗" in remark :
                 remark = '🇧🇷' + remark
             #加图标到此结束
-            if nodeR['protocol'] == 'origin' and  nodeR['obfs'] == 'plain':    #判断是否为ssr
+            if selectfirst == 'yes':     #判断是否为ssr
                 if nodeR['method'] == 'none':
                     continue
                 Json={ 'name': remark, 'type': 'ss', 'server': nodeR['server'], 'port': nodeR['server_port'], 'password':nodeR['password'] , \
-                'cipher': nodeR['method'], 'protocol': nodeR['protocol'], 'obfs': nodeR['obfs'] }
+                'cipher': nodeR['method'] }
             else:
                 Json={ 'name': remark, 'type': 'ssr', 'server': nodeR['server'], 'port': nodeR['server_port'], 'password':nodeR['password'] , \
                   'cipher': nodeR['method'], 'protocol': nodeR['protocol'], 'protocolparam': nodeR['protocol_param'], 'obfs': nodeR['obfs'], 'obfsparam': nodeR['obfs_param'] }
@@ -304,11 +304,11 @@ def writeRulescustom(sublink,flagname,selectfirst):    #客制化策略组及规
                         else :
                             continue
                     else :                         #每组是否有多个匹配要求   @香港&1倍@美国     适用 美国这组
-                        if nodeR['protocol'] == 'origin' and  nodeR['obfs'] == 'plain':
+                        if selectfirst == 'yes': 
                             if nodeR['method'] == 'none':
                                 continue
                             Json={ 'name': remark, 'type': 'ss', 'server': nodeR['server'], 'port': nodeR['server_port'], 'password':nodeR['password'] , \
-                            'cipher': nodeR['method'], 'protocol': nodeR['protocol'], 'obfs': nodeR['obfs'] }
+                            'cipher': nodeR['method'] }
                             Peoxies +='- '+str(Json)+'\n'
                             other.insert(0,remark)
                         else:
