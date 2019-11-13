@@ -159,7 +159,7 @@ def writeRules(sublink,selectfirst):    #策略组及规则
                 Json={ 'name': remark, 'type': 'ssr', 'server': nodeR['server'], 'port': nodeR['server_port'], 'password':nodeR['password'] , \
                   'cipher': nodeR['method'], 'protocol': nodeR['protocol'], 'protocolparam': nodeR['protocol_param'], 'obfs': nodeR['obfs'], 'obfsparam': nodeR['obfs_param'] }
             Peoxies +='- '+str(Json)+'\n'    #节点加加
-            other.append(remark)          #节点名list加加
+            if "剩余" not in remark  and "过期" not in remark :other.append(remark)          #节点名list加加
             if "深台" in remark  or "彰化" in remark  or "新北" in remark or "台" in remark : tw.append(remark)
         proxy = str(other)                   #节点名转化为字符串
         proxy1 = proxy[1:-1]                 #节点名字符串去掉中括号
