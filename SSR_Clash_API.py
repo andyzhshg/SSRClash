@@ -112,6 +112,7 @@ def writeRules(sublink,selectfirst):    #策略组及规则
     try:
         other=[]           #节点名list
         tw=[]
+        tb=[]
         Peoxies = ''       #节点
         data = Retry_request(sublink)    #请求订阅        
         ssrdata=safe_base64_decode(data).strip().split('\n')              
@@ -159,6 +160,7 @@ def writeRules(sublink,selectfirst):    #策略组及规则
                 Json={ 'name': remark, 'type': 'ssr', 'server': nodeR['server'], 'port': nodeR['server_port'], 'password':nodeR['password'] , \
                   'cipher': nodeR['method'], 'protocol': nodeR['protocol'], 'protocolparam': nodeR['protocol_param'], 'obfs': nodeR['obfs'], 'obfsparam': nodeR['obfs_param'] }
             Peoxies +='- '+str(Json)+'\n'    #节点加加
+            if "剩余"  in remark  or "过期"  in remark : tb.append(remark)
             if "剩余" not in remark  and "过期" not in remark :other.append(remark)          #节点名list加加
             if "深台" in remark  or "彰化" in remark  or "新北" in remark or "台" in remark : tw.append(remark)
         proxy = str(other)                   #节点名转化为字符串
@@ -166,6 +168,7 @@ def writeRules(sublink,selectfirst):    #策略组及规则
         #'- { name: "延迟最低", type: "url-test", "proxies": ' + proxy + ', url: "http://www.gstatic.com/generate_204", interval: 600'+ '}\n'\
         if selectfirst == 'yes':             #是否修改代理模式默认顺序，默认为故障切换在前
             ProxyGroup='\n\nProxy Group:\n\n'\
+                    '- { name: "日期流量", type: select, proxies: ["PROXY", ' +str(tb)[1:]+' }\n'\
                     '- { name: "PROXY", type: "select", "proxies": ' + proxy + '}\n'\
                     '- { name: "netflix", type: select, proxies: '+proxy+' }\n'\
                     '- { name: "line动画疯kk", type: select, proxies: ["PROXY", ' +str(tw)[1:]+' }\n'\
@@ -177,6 +180,7 @@ def writeRules(sublink,selectfirst):    #策略组及规则
                     'Rule:\n'
         else :
             ProxyGroup='\n\nProxy Group:\n\n'\
+                    '- { name: "日期流量", type: select, proxies: ["PROXY", ' +str(tb)[1:]+' }\n'\
                     '- { name: "PROXY", type: "select", "proxies": ' + proxy + '}\n'\
                     '- { name: "netflix", type: select, proxies: '+proxy+' }\n'\
                     '- { name: "line动画疯kk", type: select, proxies: ["PROXY", ' +str(tw)[1:]+' }\n'\
