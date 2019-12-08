@@ -168,7 +168,6 @@ def writeRules(sublink,selectfirst):    #策略组及规则
         #'- { name: "延迟最低", type: "url-test", "proxies": ' + proxy + ', url: "http://www.gstatic.com/generate_204", interval: 600'+ '}\n'\
         if selectfirst == 'yes':             #是否修改代理模式默认顺序，默认为故障切换在前
             ProxyGroup='\n\nProxy Group:\n\n'\
-                    '- { name: "日期流量", type: select, proxies: ["PROXY", ' +str(tb)[1:]+' }\n'\
                     '- { name: "PROXY", type: "select", "proxies": ' + proxy + '}\n'\
                     '- { name: "netflix", type: select, proxies: '+proxy+' }\n'\
                     '- { name: "line动画疯kk", type: select, proxies: ["PROXY", ' +str(tw)[1:]+' }\n'\
