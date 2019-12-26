@@ -42,6 +42,7 @@
 - DOMAIN-SUFFIX,nflximg.net,netflix
 - DOMAIN-SUFFIX,nflxso.net,netflix
 - DOMAIN-SUFFIX,nflxvideo.net,netflix
+- DOMAIN-KEYWORD,netflix,netflix
 # > Netflix
 - IP-CIDR,23.246.0.0/18,netflix
 - IP-CIDR,37.77.184.0/21,netflix
