@@ -159,7 +159,7 @@ def writeRules(sublink,selectfirst):    #策略组及规则
                 'cipher': nodeR['method'] }
             else:
                 Json={ 'name': remark, 'type': 'ssr', 'server': nodeR['server'], 'port': nodeR['server_port'], 'password':nodeR['password'] , \
-                  'cipher': nodeR['method'], 'protocol': nodeR['protocol'], 'protocolparam': nodeR['protocol_param'], 'obfs': nodeR['obfs'], 'obfsparam': 'bilivideo.com,alicdn.com,data.video.qiyi.com' }
+                  'cipher': nodeR['method'], 'protocol': nodeR['protocol'], 'protocolparam': nodeR['protocol_param'], 'obfs': nodeR['obfs'], 'obfsparam': 'data.bilibili.com,alicdn.com,data.video.qiyi.com' }
             Peoxies +='- '+str(Json)+'\n'    #节点加加
             if "剩余"  in remark  or "过期"  in remark : tb.append(remark)
             if "剩余" not in remark  and "过期" not in remark :other.append(remark)          #节点名list加加
@@ -304,7 +304,7 @@ def writeRulescustom(sublink,flagname,selectfirst):    #客制化策略组及规
                                 continue
                             else:
                                 Json={ 'name': remark, 'type': 'ssr', 'server': nodeR['server'], 'port': nodeR['server_port'], 'password':nodeR['password'] , \
-                                'cipher': nodeR['method'], 'protocol': nodeR['protocol'], 'protocolparam': nodeR['protocol_param'], 'obfs': nodeR['obfs'], 'obfsparam': 'bilivideo.com,alicdn.com,data.video.qiyi.com' }
+                                'cipher': nodeR['method'], 'protocol': nodeR['protocol'], 'protocolparam': nodeR['protocol_param'], 'obfs': nodeR['obfs'], 'obfsparam': 'data.bilibili.com,alicdn.com,data.video.qiyi.com' }
                                 noderemark += remark
                                 Peoxies +='- '+str(Json)+'\n'
                                 other.insert(0,remark)
@@ -323,7 +323,7 @@ def writeRulescustom(sublink,flagname,selectfirst):    #客制化策略组及规
                                 continue
                             else:
                                 Json={ 'name': remark, 'type': 'ssr', 'server': nodeR['server'], 'port': nodeR['server_port'], 'password':nodeR['password'] , \
-                                'cipher': nodeR['method'], 'protocol': nodeR['protocol'], 'protocolparam': nodeR['protocol_param'], 'obfs': nodeR['obfs'], 'obfsparam': 'bilivideo.com,alicdn.com,data.video.qiyi.com' }
+                                'cipher': nodeR['method'], 'protocol': nodeR['protocol'], 'protocolparam': nodeR['protocol_param'], 'obfs': nodeR['obfs'], 'obfsparam': 'data.bilibili.com,alicdn.com,data.video.qiyi.com' }
                                 noderemark += remark
                                 Peoxies +='- '+str(Json)+'\n'
                                 other.append(remark)
