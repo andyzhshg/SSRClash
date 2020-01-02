@@ -1487,4 +1487,4 @@
 # GeoIP China
 - GEOIP,CN,DIRECT
 
-- MATCH,白|黑名单
+- MATCH,黑|白名单
