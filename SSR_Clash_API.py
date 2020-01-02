@@ -114,6 +114,7 @@ def writeRules(sublink,selectfirst):    #策略组及规则
         tw=[]
         tb=[]
         hktw=[]
+        tg=[]
         Peoxies = ''       #节点
         data = Retry_request(sublink)    #请求订阅        
         ssrdata=safe_base64_decode(data).strip().split('\n')              
@@ -165,33 +166,34 @@ def writeRules(sublink,selectfirst):    #策略组及规则
             if "剩余" not in remark  and "过期" not in remark :other.append(remark)          #节点名list加加
             if "深台" in remark  or "彰化" in remark  or "新北" in remark or "台" in remark : tw.append(remark)
             if "深台" in remark  or "彰化" in remark  or "新北" in remark or "台" in remark or "香港" in remark : hktw.append(remark)
+            if "美" in remark  or "圣克拉拉" in remark  or "波特兰" in remark  or "洛杉矶" in remark  or "费利蒙" in remark  or "圣何塞" in remark or "达拉斯" in remark or "芝加哥" in remark or "凤凰城" in remark or "西雅图" in remark or "硅谷" in remark or "狮城"  in remark or "新加坡" in remark : tg.append(remark) 
         proxy = str(other)                   #节点名转化为字符串
         proxy1 = proxy[1:-1]                 #节点名字符串去掉中括号
         #'- { name: "延迟最低", type: "url-test", "proxies": ' + proxy + ', url: "http://www.gstatic.com/generate_204", interval: 600'+ '}\n'\
         if selectfirst == 'yes':             #是否修改代理模式默认顺序，默认为故障切换在前
             ProxyGroup='\n\nProxy Group:\n\n'\
                     '- { name: "PROXY", type: "select", "proxies": ' + proxy + '}\n'\
-                    '- { name: "netflix", type: select, proxies: '+proxy+' }\n'\
+                    '- { name: "netflix", type: select, proxies: ["PROXY",'+proxy1+'] }\n'\
                     '- { name: "line动画疯kk", type: select, proxies: ["PROXY", ' +str(tw)[1:]+' }\n'\
-                    '- { name: "tg", type: select, proxies: ["PROXY", '+proxy1+'] }\n'\
+                    '- { name: "tg", type: select, proxies: [ ' +str(tg)[1:]+' }\n'\
                     '- { name: "GlobalMedia", type: select, proxies: ["PROXY",'+proxy1+'] }\n'\
                     '- { name: "HKMTMedia", type: select, proxies: ["DIRECT","PROXY", ' +str(hktw)[1:]+' }\n'\
                     '- { name: "Hijacking", type: select, proxies: ["REJECT", "DIRECT"] }\n'\
                     '- { name: "Apple", type: select, proxies: ["DIRECT", "PROXY"] }\n'\
-                    '- { name: "白|黑名单", type: select, proxies: ["PROXY", "DIRECT"] }\n\n\n'\
+                    '- { name: "黑|白名单", type: select, proxies: ["DIRECT", "PROXY"] }\n\n\n'\
                     'Rule:\n'
         else :
             ProxyGroup='\n\nProxy Group:\n\n'\
                     '- { name: "日期流量", type: select, proxies: ["PROXY", ' +str(tb)[1:]+' }\n'\
                     '- { name: "PROXY", type: "select", "proxies": ' + proxy + '}\n'\
-                    '- { name: "netflix", type: select, proxies: '+proxy+' }\n'\
+                    '- { name: "netflix", type: select, proxies: ["PROXY",'+proxy1+'] }\n'\
                     '- { name: "line动画疯kk", type: select, proxies: ["PROXY", ' +str(tw)[1:]+' }\n'\
-                    '- { name: "tg", type: select, proxies: ["PROXY", '+proxy1+'] }\n'\
+                    '- { name: "tg", type: select, proxies: [ ' +str(tg)[1:]+' }\n'\
                     '- { name: "GlobalMedia", type: select, proxies: ["PROXY",'+proxy1+'] }\n'\
                     '- { name: "HKMTMedia", type: select, proxies: ["DIRECT","PROXY", ' +str(hktw)[1:]+' }\n'\
                     '- { name: "Hijacking", type: select, proxies: ["REJECT", "DIRECT"] }\n'\
                     '- { name: "Apple", type: select, proxies: ["DIRECT", "PROXY"] }\n'\
-                    '- { name: "白|黑名单", type: select, proxies: ["PROXY", "DIRECT"] }\n\n\n'\
+                    '- { name: "黑|白名单", type: select, proxies: ["DIRECT", "PROXY"] }\n\n\n'\
                     'Rule:\n'           
         rules = getrules()   #获取分流规则       
         currenttime = '# 更新时间为（看分钟就行，不知道哪个时区）：'+time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())+'\n' #获取更新时间
@@ -343,7 +345,7 @@ def writeRulescustom(sublink,flagname,selectfirst):    #客制化策略组及规
                     '- { name: "HKMTMedia", type: select, proxies: ["DIRECT","PROXY"] }\n'\
                     '- { name: "Hijacking", type: select, proxies: ["REJECT", "DIRECT"] }\n'\
                     '- { name: "Apple", type: select, proxies: ["DIRECT", "PROXY"] }\n'\
-                    '- { name: "白|黑名单", type: select, proxies: ["PROXY", "DIRECT"] }\n\n\n'\
+                    '- { name: "黑|白名单", type: select, proxies: ["DIRECT", "PROXY"] }\n\n\n'\
                     'Rule:\n'
         else :
             ProxyGroup='\n\nProxy Group:\n\n'\
@@ -355,7 +357,7 @@ def writeRulescustom(sublink,flagname,selectfirst):    #客制化策略组及规
                     '- { name: "HKMTMedia", type: select, proxies: ["DIRECT","PROXY"] }\n'\
                     '- { name: "Hijacking", type: select, proxies: ["REJECT", "DIRECT"] }\n'\
                     '- { name: "Apple", type: select, proxies: ["DIRECT", "PROXY"] }\n'\
-                    '- { name: "白|黑名单", type: select, proxies: ["PROXY", "DIRECT"] }\n\n\n'\
+                    '- { name: "黑|白名单", type: select, proxies: ["DIRECT", "PROXY"] }\n\n\n'\
                     'Rule:\n'             
         rules = getrules()        
         currenttime = '# 更新时间为（看分钟就行，不知道哪个时区）：'+time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())+'\n'
