@@ -44,6 +44,7 @@
 - DOMAIN-SUFFIX,nflxvideo.net,netflix
 - DOMAIN-KEYWORD,netflix,netflix
 - DOMAIN-SUFFIX,fast.com,netflix
+- DOMAIN-SUFFIX,speedtest.net,PROXY
 # > Netflix
 - IP-CIDR,23.246.0.0/18,netflix
 - IP-CIDR,37.77.184.0/21,netflix
