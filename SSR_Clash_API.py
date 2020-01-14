@@ -115,6 +115,11 @@ def writeRules(sublink,selectfirst):    #策略组及规则
         tb=[]
         hktw=[]
         tg=[]
+        hk=[]
+        us=[]
+        sg=[]
+        jp=[]
+        ot=[]
         Peoxies = ''       #节点
         data = Retry_request(sublink)    #请求订阅        
         ssrdata=safe_base64_decode(data).strip().split('\n')              
@@ -180,8 +185,26 @@ def writeRules(sublink,selectfirst):    #策略组及规则
                     '- { name: "HKMTMedia", type: select, proxies: ["DIRECT","PROXY", ' +str(hktw)[1:]+' }\n'\
                     '- { name: "Hijacking", type: select, proxies: ["REJECT", "DIRECT"] }\n'\
                     '- { name: "Apple", type: select, proxies: ["DIRECT", "PROXY"] }\n'\
-                    '- { name: "黑|白名单", type: select, proxies: ["DIRECT", "PROXY"] }\n\n\n'\
+                    '- { name: "白|黑名单", type: select, proxies: ["PROXY", "DIRECT"] }\n\n\n'\
                     'Rule:\n'
+        if selectfirst == 'x':             #是否修改代理模式默认顺序，默认为故障切换在前
+            ProxyGroup='\n\nProxy Group:\n\n'\
+                    '- { name: "PROXY", type: select, proxies: ["HK","SG","TW","JP","US","other"] }\n'\
+                    '- { name: "netflix", type: select, proxies: ["PROXY","HK","SG","TW","JP","US","other"] }\n'\
+                    '- { name: "line动画疯kk", type: select, proxies: ["PROXY","HK","SG","TW","JP","US","other"] }\n'\
+                    '- { name: "tg", type: select, proxies: ["PROXY","HK","SG","TW","JP","US","other"] }\n'\
+                    '- { name: "GlobalMedia", type: select, proxies: ["PROXY","HK","SG","TW","JP","US","other"] }\n'\
+                    '- { name: "HK", type: select, proxies: ['+str(hk)[1:]+' }\n'\
+                    '- { name: "SG", type: select, proxies: ['+str(sg)[1:]+' }\n'\
+                    '- { name: "TW", type: select, proxies: ["DIRECT",'+str(tw)[1:]+' }\n'\
+                    '- { name: "JP", type: select, proxies: ['+str(jp)[1:]+' }\n'\
+                    '- { name: "US", type: select, proxies: ['+str(us)[1:]+' }\n'\
+                    '- { name: "other", type: select, proxies: ['+str(ot)[1:]+' }\n'\
+                    '- { name: "HKMTMedia", type: select, proxies: ["DIRECT","HK","SG","TW","JP","US","other"] }\n'\
+                    '- { name: "Hijacking", type: select, proxies: ["REJECT", "DIRECT"] }\n'\
+                    '- { name: "Apple", type: select, proxies: ["DIRECT", "PROXY","HK","SG","TW","JP","US","other"] }\n'\
+                    '- { name: "白|黑名单", type: select, proxies: ["PROXY", "DIRECT"] }\n\n\n'\
+                    'Rule:\n'                     
         else :
             ProxyGroup='\n\nProxy Group:\n\n'\
                     '- { name: "日期流量", type: select, proxies: ["PROXY", ' +str(tb)[1:]+' }\n'\
@@ -193,7 +216,7 @@ def writeRules(sublink,selectfirst):    #策略组及规则
                     '- { name: "HKMTMedia", type: select, proxies: ["DIRECT","PROXY", ' +str(hktw)[1:]+' }\n'\
                     '- { name: "Hijacking", type: select, proxies: ["REJECT", "DIRECT"] }\n'\
                     '- { name: "Apple", type: select, proxies: ["DIRECT", "PROXY"] }\n'\
-                    '- { name: "黑|白名单", type: select, proxies: ["DIRECT", "PROXY"] }\n\n\n'\
+                    '- { name: "白|黑名单", type: select, proxies: ["PROXY", "DIRECT"] }\n\n\n'\
                     'Rule:\n'           
         rules = getrules()   #获取分流规则       
         currenttime = '# 更新时间为（看分钟就行，不知道哪个时区）：'+time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())+'\n' #获取更新时间
@@ -345,7 +368,7 @@ def writeRulescustom(sublink,flagname,selectfirst):    #客制化策略组及规
                     '- { name: "HKMTMedia", type: select, proxies: ["DIRECT","PROXY"] }\n'\
                     '- { name: "Hijacking", type: select, proxies: ["REJECT", "DIRECT"] }\n'\
                     '- { name: "Apple", type: select, proxies: ["DIRECT", "PROXY"] }\n'\
-                    '- { name: "黑|白名单", type: select, proxies: ["DIRECT", "PROXY"] }\n\n\n'\
+                    '- { name: "白|黑名单", type: select, proxies: ["PROXY", "DIRECT"] }\n\n\n'\
                     'Rule:\n'
         else :
             ProxyGroup='\n\nProxy Group:\n\n'\
@@ -357,13 +380,7 @@ def writeRulescustom(sublink,flagname,selectfirst):    #客制化策略组及规
                     '- { name: "HKMTMedia", type: select, proxies: ["DIRECT","PROXY"] }\n'\
                     '- { name: "Hijacking", type: select, proxies: ["REJECT", "DIRECT"] }\n'\
                     '- { name: "Apple", type: select, proxies: ["DIRECT", "PROXY"] }\n'\
-                    '- { name: "黑|白名单", type: select, proxies: ["DIRECT", "PROXY"] }\n\
-                    '- { name: "HK", type: select, proxies: ["DIRECT", "PROXY"] }\n\
-                    '- { name: "SG", type: select, proxies: ["DIRECT", "PROXY"] }\n\
-                    '- { name: "TW", type: select, proxies: ["DIRECT", "PROXY"] }\n\
-                    '- { name: "JP", type: select, proxies: ["DIRECT", "PROXY"] }\n\
-                    '- { name: "US", type: select, proxies: ["DIRECT", "PROXY"] }\n\
-                    '- { name: "other", type: select, proxies: ["DIRECT", "PROXY"] }\n\n\n'\
+                    '- { name: "白|黑名单", type: select, proxies: ["PROXY", "DIRECT"] }\n\n\n'\
                     'Rule:\n'             
         rules = getrules()        
         currenttime = '# 更新时间为（看分钟就行，不知道哪个时区）：'+time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())+'\n'
@@ -381,6 +398,7 @@ def index():
         sub = request.form['left']
         custom = urllib.parse.quote(request.form['custom'])
         Clash = 'http://127.0.0.1:10086/clashr/nameless?sublink='+str(sub)+'&selectfirst=no'
+        Clash2 = 'http://127.0.0.1:10086/clashr/nameless?sublink='+str(sub)+'&selectfirst=x'
         if custom == '':
              CustomClash = '假设想要香港就@香港，假设想要香港的2倍节点就@香港&2倍。支持多个@即：@PCCW@CMHK@香港&2倍'
              CustomSSR =   '请填入想要的节点，同上'
@@ -389,7 +407,7 @@ def index():
             CustomSSR = 'http://127.0.0.1:10086/ssr/nameless?sublink='+str(sub)+'&custom='+str(custom)
         QX = 'http://127.0.0.1:10086/qx/nameless?sublink='+str(sub)+'&tag=stc'
         Loon = 'http://127.0.0.1:10086/loon/nameless?sublink='+str(sub)+'&tag=stc'
-        return render_template('index.html', Clash = Clash,QX = QX,Loon=Loon,CustomClash = CustomClash,CustomSSR = CustomSSR,Custom =request.form['custom'] ,sub = sub)
+        return render_template('index.html', Clash = Clash,Clash2 = Clash2,QX = QX,Loon=Loon,CustomClash = CustomClash,CustomSSR = CustomSSR,Custom =request.form['custom'] ,sub = sub)
     return render_template('index.html')
 
 @app.route('/clashr/nameless', methods=['GET', 'POST'])
