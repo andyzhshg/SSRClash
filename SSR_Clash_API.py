@@ -201,7 +201,7 @@ def writeRules(sublink,selectfirst):    #策略组及规则
                     '- { name: "GlobalMedia", type: select, proxies: ["PROXY","HK","SG","TW","JP","US","other"] }\n'\
                     '- { name: "HK", type: select, proxies: ['+str(hk)[1:]+' }\n'\
                     '- { name: "SG", type: select, proxies: ['+str(sg)[1:]+' }\n'\
-                    '- { name: "TW", type: select, proxies: ["SG",'+str(tw)[1:]+' }\n'\
+                    '- { name: "TW", type: select, proxies: ['+str(tw)[1:]+' }\n'\
                     '- { name: "JP", type: select, proxies: ['+str(jp)[1:]+' }\n'\
                     '- { name: "US", type: select, proxies: ['+str(us)[1:]+' }\n'\
                     '- { name: "other", type: select, proxies: ['+str(ot)[1:]+' }\n'\
