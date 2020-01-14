@@ -357,7 +357,13 @@ def writeRulescustom(sublink,flagname,selectfirst):    #客制化策略组及规
                     '- { name: "HKMTMedia", type: select, proxies: ["DIRECT","PROXY"] }\n'\
                     '- { name: "Hijacking", type: select, proxies: ["REJECT", "DIRECT"] }\n'\
                     '- { name: "Apple", type: select, proxies: ["DIRECT", "PROXY"] }\n'\
-                    '- { name: "黑|白名单", type: select, proxies: ["DIRECT", "PROXY"] }\n\n\n'\
+                    '- { name: "黑|白名单", type: select, proxies: ["DIRECT", "PROXY"] }\n\
+                    '- { name: "HK", type: select, proxies: ["DIRECT", "PROXY"] }\n\
+                    '- { name: "SG", type: select, proxies: ["DIRECT", "PROXY"] }\n\
+                    '- { name: "TW", type: select, proxies: ["DIRECT", "PROXY"] }\n\
+                    '- { name: "JP", type: select, proxies: ["DIRECT", "PROXY"] }\n\
+                    '- { name: "US", type: select, proxies: ["DIRECT", "PROXY"] }\n\
+                    '- { name: "other", type: select, proxies: ["DIRECT", "PROXY"] }\n\n\n'\
                     'Rule:\n'             
         rules = getrules()        
         currenttime = '# 更新时间为（看分钟就行，不知道哪个时区）：'+time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())+'\n'
