@@ -1488,4 +1488,4 @@
 # GeoIP China
 - GEOIP,CN,DIRECT
 
-- MATCH,黑|白名单
+- MATCH,白|黑名单
