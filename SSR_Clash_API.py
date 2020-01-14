@@ -171,7 +171,12 @@ def writeRules(sublink,selectfirst):    #策略组及规则
             if "剩余" not in remark  and "过期" not in remark :other.append(remark)          #节点名list加加
             if "深台" in remark  or "彰化" in remark  or "新北" in remark or "台" in remark : tw.append(remark)
             if "深台" in remark  or "彰化" in remark  or "新北" in remark or "台" in remark or "香港" in remark : hktw.append(remark)
-            if "美" in remark  or "圣克拉拉" in remark  or "波特兰" in remark  or "洛杉矶" in remark  or "费利蒙" in remark  or "圣何塞" in remark or "达拉斯" in remark or "芝加哥" in remark or "凤凰城" in remark or "西雅图" in remark or "硅谷" in remark or "狮城"  in remark or "新加坡" in remark : tg.append(remark) 
+            if "美" in remark  or "圣克拉拉" in remark  or "波特兰" in remark  or "洛杉矶" in remark  or "费利蒙" in remark  or "圣何塞" in remark or "达拉斯" in remark or "芝加哥" in remark or "凤凰城" in remark or "西雅图" in remark or "硅谷" in remark or "狮城"  in remark or "新加坡" in remark : tg.append(remark)
+            if "狮城"  in remark or "新加坡" in remark : sg.append(remark)
+            if "港" in remark  : hk.append(remark)
+            if "美" in remark  or "圣克拉拉" in remark  or "波特兰" in remark  or "洛杉矶" in remark  or "费利蒙" in remark  or "圣何塞" in remark or "达拉斯" in remark or "芝加哥" in remark or "凤凰城" in remark or "西雅图" in remark or "硅谷" in remark: us.append(remark)
+            if "日本" in remark  or "埼玉" in remark   or "东京" in remark or "大阪" in remark or "沪日" in remark or "深日" in remark or "川日" in remark: jp.append(remark)
+            if  "港" not in remark  and "深台" not in remark  and "彰化" not in remark  and "新北" not in remark and "台" not in remark and "狮城"  not in remark and "新加坡" not in remark and "美" not in remark  and "圣克拉拉" not in remark  and "波特兰" not in remark  and "洛杉矶" not in remark  and "费利蒙" not in remark  and "圣何塞" not in remark and "达拉斯" not in remark and "芝加哥" not in remark and "凤凰城" not in remark and "西雅图" not in remark and "硅谷" not in remark and "日本" not in remark  and "埼玉" not in remark   and "东京" not in remark and "大阪" not in remark and "沪日" not in remark and "深日" not in remark and "川日" not in remark : ot.append(remark)
         proxy = str(other)                   #节点名转化为字符串
         proxy1 = proxy[1:-1]                 #节点名字符串去掉中括号
         #'- { name: "延迟最低", type: "url-test", "proxies": ' + proxy + ', url: "http://www.gstatic.com/generate_204", interval: 600'+ '}\n'\
