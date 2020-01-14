@@ -195,13 +195,13 @@ def writeRules(sublink,selectfirst):    #策略组及规则
         if selectfirst == 'x':             #是否修改代理模式默认顺序，默认为故障切换在前
             ProxyGroup='\n\nProxy Group:\n\n'\
                     '- { name: "PROXY", type: select, proxies: ["HK","SG","TW","JP","US","other"] }\n'\
-                    '- { name: "netflix", type: select, proxies: ["PROXY","HK","SG","TW","JP","US","other"] }\n'\
-                    '- { name: "line动画疯kk", type: select, proxies: ["PROXY","HK","SG","TW","JP","US","other"] }\n'\
-                    '- { name: "tg", type: select, proxies: ["PROXY","HK","SG","TW","JP","US","other"] }\n'\
+                    '- { name: "netflix", type: select, proxies: ["SG","HK","TW","JP","US","other"] }\n'\
+                    '- { name: "line动画疯kk", type: select, proxies: ["TW","HK","SG","JP","US","other"] }\n'\
+                    '- { name: "tg", type: select, proxies: ["SG","US","HK","TW","JP","other"] }\n'\
                     '- { name: "GlobalMedia", type: select, proxies: ["PROXY","HK","SG","TW","JP","US","other"] }\n'\
                     '- { name: "HK", type: select, proxies: ['+str(hk)[1:]+' }\n'\
                     '- { name: "SG", type: select, proxies: ['+str(sg)[1:]+' }\n'\
-                    '- { name: "TW", type: select, proxies: ["DIRECT",'+str(tw)[1:]+' }\n'\
+                    '- { name: "TW", type: select, proxies: ["SG",'+str(tw)[1:]+' }\n'\
                     '- { name: "JP", type: select, proxies: ['+str(jp)[1:]+' }\n'\
                     '- { name: "US", type: select, proxies: ['+str(us)[1:]+' }\n'\
                     '- { name: "other", type: select, proxies: ['+str(ot)[1:]+' }\n'\
