@@ -7,5 +7,5 @@ WORKDIR /root
 RUN git clone https://github.com/andyzhshg/SSRClash.git
 
 WORKDIR /root/SSRClash
-
+EXPOSE 10086/tcp
 CMD [ "python3", "SSR_Clash_API.py" ]
