@@ -1,4 +1,5 @@
 # coding=utf-8
+import os
 import sys
 import flask_restful
 import  base64
@@ -14,6 +15,8 @@ import api.loon
 from flask import Flask,render_template,request
 urllib3.disable_warnings()
 aff = '获取失败 请检查订阅是否错误或者节点带特殊符号'
+
+HOST_PORT = "http://127.0.0.1:10086"
 
 def safe_base64_decode(s): # 解码
     try:
@@ -94,10 +97,10 @@ def getrules():             # 自定义规则
     try:
         finalrules=[]
         
-        with open("./root/SSRClash/config/general.yaml", "r",encoding = 'utf-8') as f:
+        with open("./config/general.yaml", "r",encoding = 'utf-8') as f:
             p_rule = f.read() + '\n'
 
-        with open("./root/SSRClash/config/my.yaml", "r",encoding = 'utf-8') as f:
+        with open("./config/my.yaml", "r",encoding = 'utf-8') as f:
             l_rule = f.read()        
         
         Peoxies = 'Proxy:\n'
@@ -122,7 +125,8 @@ def writeRules(sublink,selectfirst):    #策略组及规则
         ot=[]
         Peoxies = ''       #节点
         data = Retry_request(sublink)    #请求订阅        
-        ssrdata=safe_base64_decode(data).strip().split('\n')              
+        ssrdata=safe_base64_decode(data).strip().split('\n')
+        # print(ssrdata)              
         for i in range(len(ssrdata)):                                                   #遍历节点            
             ssrlink = safe_base64_decode(ssrdata[i].replace('ssr://','').replace('\r',''))
             nodeR = getnodeR(ssrlink)
@@ -226,6 +230,7 @@ def writeRules(sublink,selectfirst):    #策略组及规则
         rules = getrules()   #获取分流规则       
         currenttime = '# 更新时间为（看分钟就行，不知道哪个时区）：'+time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())+'\n' #获取更新时间
         content = currenttime+rules[0]+rules[1]+Peoxies+ProxyGroup+rules[2]
+        # print(content)
         return content
 
     except Exception as e:
@@ -402,16 +407,16 @@ def index():
     if request.method == "POST":
         sub = request.form['left']
         custom = urllib.parse.quote(request.form['custom'])
-        Clash = 'http://127.0.0.1:10086/clashr/nameless?sublink='+str(sub)+'&selectfirst=no'
-        Clash2 = 'http://127.0.0.1:10086/clashr/nameless?sublink='+str(sub)+'&selectfirst=x'
+        Clash = HOST_PORT + '/clashr/nameless?sublink='+str(sub)+'&selectfirst=no'
+        Clash2 = HOST_PORT + '/clashr/nameless?sublink='+str(sub)+'&selectfirst=x'
         if custom == '':
              CustomClash = '假设想要香港就@香港，假设想要香港的2倍节点就@香港&2倍。支持多个@即：@PCCW@CMHK@香港&2倍'
              CustomSSR =   '请填入想要的节点，同上'
         else:
-            CustomClash = 'http://127.0.0.1:10086/clashr/nameless?sublink='+str(sub)+'&custom='+str(custom)+'&selectfirst=no'
-            CustomSSR = 'http://127.0.0.1:10086/ssr/nameless?sublink='+str(sub)+'&custom='+str(custom)
-        QX = 'http://127.0.0.1:10086/qx/nameless?sublink='+str(sub)+'&tag=stc'
-        Loon = 'http://127.0.0.1:10086/loon/nameless?sublink='+str(sub)+'&tag=stc'
+            CustomClash = HOST_PORT + '/clashr/nameless?sublink='+str(sub)+'&custom='+str(custom)+'&selectfirst=no'
+            CustomSSR = HOST_PORT + '/ssr/nameless?sublink='+str(sub)+'&custom='+str(custom)
+        QX = HOST_PORT + '/qx/nameless?sublink='+str(sub)+'&tag=stc'
+        Loon = HOST_PORT + '/loon/nameless?sublink='+str(sub)+'&tag=stc'
         return render_template('index.html', Clash = Clash,Clash2 = Clash2,QX = QX,Loon=Loon,CustomClash = CustomClash,CustomSSR = CustomSSR,Custom =request.form['custom'] ,sub = sub)
     return render_template('index.html')
 
@@ -419,7 +424,7 @@ def index():
 def clashapi():
     try:
         sub = request.args.get('sublink')
-        #print(sub)
+        # print(sub)
         try:
             arg = request.args.get('selectfirst')
         except Exception as e:
@@ -429,7 +434,7 @@ def clashapi():
             custom = request.args.get('custom')
         except Exception as e:
             custom = ''
-        #print(custom)
+        # print(custom)
         if custom == '' or custom == None :
             return writeRules(sub,arg)
         else :
@@ -472,4 +477,8 @@ def loonapi():
     except Exception as e:
         return '请调用格式适合正确'
 if __name__ == '__main__':
-    app.run(host='0.0.0.0',debug=False,port=10086)            #自定义端口
+    host_port = os.environ.get('HOST_PORT')
+    if host_port:
+        HOST_PORT = host_port
+    print('Using HOST_PORT: ' + HOST_PORT)
+    app.run(host='0.0.0.0',debug=True,port=10086)            #自定义端口
